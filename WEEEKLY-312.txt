@@ -1,0 +1,21 @@
+class Solution {
+    public String[] sortPeople(String[] names, int[] heights) {
+        
+        String[] res = new String[names.length];
+        Integer[] heightsCopy = new Integer[heights.length];
+        int[] indexOfNames = new int[100001];
+        
+        for(int i = 0; i < heights.length; i++){
+            indexOfNames[heights[i]] = i;
+            heightsCopy[i] = heights[i];
+        }
+            
+        Arrays.sort(heightsCopy, Collections.reverseOrder());
+        
+        for(int i = 0; i < heights.length; i++){
+            res[i] = names[indexOfNames[heightsCopy[i]]];        
+        }
+        
+        return res;        
+    }
+}
